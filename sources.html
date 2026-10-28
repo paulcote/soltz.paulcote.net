@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sources de données — Midi solaire au Canada</title>
+    <meta name="description" content="Origine des données et des calculs de la carte du midi solaire au Canada : SunCalc, règles de l'heure légale, OpenStreetMap." />
+    <link rel="canonical" href="%VITE_SITE_URL%/sources.html" />
+    <link rel="alternate" hreflang="fr" href="%VITE_SITE_URL%/sources.html" />
+    <link rel="alternate" hreflang="en" href="%VITE_SITE_URL%/sources.html?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="%VITE_SITE_URL%/sources.html" />
+    <meta name="theme-color" content="#f4f2ea" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Midi solaire au Canada" />
+    <meta property="og:title" content="Sources de données — Midi solaire au Canada" />
+    <meta property="og:description" content="Origine des données et des calculs de la carte du midi solaire au Canada : SunCalc, règles de l'heure légale, OpenStreetMap." />
+    <meta property="og:url" content="%VITE_SITE_URL%/sources.html" />
+    <meta property="og:locale" content="fr_CA" />
+    <meta property="og:locale:alternate" content="en_CA" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Carte du Canada colorée selon le décalage du midi solaire par rapport à 12:00" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sources de données — Midi solaire au Canada" />
+    <meta name="twitter:description" content="Origine des données et des calculs de la carte du midi solaire au Canada : SunCalc, règles de l'heure légale, OpenStreetMap." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.png" />
+
+    <script>if (new URLSearchParams(location.search).get("lang") === "en") { document.documentElement.lang = "en"; document.title = "Data sources — Solar Noon in Canada"; }</script>
+  </head>
+  <body data-page="sources">
+    <main class="prose">
+      <div lang="fr">
+      <header>
+        <p><a href="./" data-keep-lang>← Retour à la carte</a></p>
+        <h1>Sources de données</h1>
+      </header>
+
+      <h2>Calcul solaire</h2>
+      <ul>
+        <li>Lever, coucher et midi solaire : bibliothèque <a href="https://github.com/mourner/suncalc" target="_blank" rel="noopener">SunCalc</a>, fondée sur les formules astronomiques usuelles (équation du temps, déclinaison du soleil).</li>
+        <li>Dates des solstices et équinoxes : algorithmes de Jean Meeus, <i>Astronomical Algorithms</i>, arrondis au jour en heure de l'Est.</li>
+        <li>Le midi solaire est calculé par longitude (à 55° N) pour la couleur de la carte, et à l'endroit exact du curseur pour l'infobulle.</li>
+      </ul>
+
+      <h2>Heure légale</h2>
+      <ul>
+        <li>Heure d'été nord-américaine : du deuxième dimanche de mars à 2 h au premier dimanche de novembre à 2 h, heure locale.</li>
+        <li>Fuseaux et exceptions (Saskatchewan, Yukon, nord-est de la Colombie-Britannique, Basse-Côte-Nord et Îles-de-la-Madeleine au Québec, Terre-Neuve) : établis à partir des règles provinciales, avec des limites approximatives. Les petites enclaves sont ignorées.</li>
+        <li>Colombie-Britannique (UTC−7), Alberta (UTC−6), Manitoba (UTC−5) et Territoires du Nord-Ouest (UTC−6) : heure d'été permanente, selon l'option « changements récents », activée par défaut.</li>
+        <li>Les modes « heure d'été toute l'année » et « heure normale toute l'année » sont des scénarios hypothétiques.</li>
+      </ul>
+
+      <h2>Cartographie</h2>
+      <ul>
+        <li>Fond de carte : serveur de tuiles VoltNav, données © contributeurs <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</li>
+        <li>Affichage : <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>.</li>
+        <li>Limites des provinces et territoires : contours simplifiés pour le web (fichier <code>canada.geojson</code>).</li>
+      </ul>
+
+      <p class="note">Les valeurs sont fournies à titre indicatif et peuvent différer de quelques minutes des almanachs officiels.</p>
+    </div>
+      <div lang="en">
+      <header>
+        <p><a href="./" data-keep-lang>← Back to the map</a></p>
+        <h1>Data sources</h1>
+      </header>
+
+      <h2>Solar calculation</h2>
+      <ul>
+        <li>Sunrise, sunset and solar noon: the <a href="https://github.com/mourner/suncalc" target="_blank" rel="noopener">SunCalc</a> library, based on standard astronomical formulas (equation of time, solar declination).</li>
+        <li>Solstice and equinox dates: Jean Meeus's algorithms, <i>Astronomical Algorithms</i>, rounded to the day in Eastern time.</li>
+        <li>Solar noon is computed per longitude (at 55° N) for the map colours, and at the exact cursor position for the tooltip.</li>
+      </ul>
+
+      <h2>Legal time</h2>
+      <ul>
+        <li>North American daylight saving time: from the second Sunday of March at 2:00 to the first Sunday of November at 2:00, local time.</li>
+        <li>Zones and exceptions (Saskatchewan, Yukon, north-eastern British Columbia, Quebec's Lower North Shore and Magdalen Islands, Newfoundland): based on provincial rules, with approximate boundaries. Small enclaves are ignored.</li>
+        <li>British Columbia (UTC−7), Alberta (UTC−6), Manitoba (UTC−5) and the Northwest Territories (UTC−6): permanent daylight time, controlled by the "recent changes" option, on by default.</li>
+        <li>The "daylight time all year" and "standard time all year" modes are hypothetical scenarios.</li>
+      </ul>
+
+      <h2>Mapping</h2>
+      <ul>
+        <li>Base map: VoltNav tile server, data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors.</li>
+        <li>Rendering: <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>.</li>
+        <li>Province and territory boundaries: simplified outlines for the web (<code>canada.geojson</code>).</li>
+      </ul>
+
+      <p class="note">Values are indicative and may differ by a few minutes from official almanacs.</p>
+</div>
+    </main>
+    <footer class="site-foot">
+      <div class="bar">
+        <span class="attribution"><span lang="fr">Conçu à Québec par</span><span lang="en">Designed in Quebec City by</span> <a href="https://paulcote.net" target="_blank" rel="noopener">Paul Côté</a> — <span lang="fr">© 2026 Tous droits réservés</span><span lang="en">© 2026 All rights reserved</span></span>
+        <nav class="links" aria-label="Pages légales"><a href="sources.html" data-keep-lang><span lang="fr">Sources de données</span><span lang="en">Data sources</span></a></nav>
+      </div>
+    </footer>
+      <script type="module">
+      import "/src/sources.ts";
+    </script>
+  </body>
+</html>

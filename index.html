@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Midi solaire au Canada — heure d'été, heure normale, lever et coucher</title>
+    <meta name="description" content="Carte interactive du midi solaire au Canada : décalage par rapport à 12:00, lever et coucher du soleil, selon la date et l'heure d'été ou l'heure normale toute l'année." />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+    <link rel="alternate" hreflang="fr" href="%VITE_SITE_URL%/" />
+    <link rel="alternate" hreflang="en" href="%VITE_SITE_URL%/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="%VITE_SITE_URL%/" />
+    <meta name="theme-color" content="#f4f2ea" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Midi solaire au Canada" />
+    <meta property="og:title" content="Midi solaire au Canada" />
+    <meta property="og:description" content="Carte interactive du midi solaire au Canada : décalage par rapport à 12:00, lever et coucher du soleil, selon la date et l'heure d'été ou l'heure normale toute l'année." />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:locale" content="fr_CA" />
+    <meta property="og:locale:alternate" content="en_CA" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Carte du Canada colorée selon le décalage du midi solaire par rapport à 12:00" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Midi solaire au Canada" />
+    <meta name="twitter:description" content="Carte interactive du midi solaire au Canada : décalage par rapport à 12:00, lever et coucher du soleil, selon la date et l'heure d'été ou l'heure normale toute l'année." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.png" />
+
+    <script>if (new URLSearchParams(location.search).get("lang") === "en") document.documentElement.lang = "en";</script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <button id="lang" type="button" data-i18n="switchTo">English</button>
+        <h1 data-i18n="title">Midi solaire au Canada</h1>
+        <p id="subtitle"></p>
+      </header>
+
+      <section id="controls">
+        <div id="slider-block">
+          <div id="slider-head"><span id="date-label"></span><button id="today" type="button" data-i18n="today">Aujourd'hui</button></div>
+          <input type="range" id="day" min="0" max="364" step="1" data-i18n-aria="dayAria" aria-label="Jour de l'année" />
+          <div id="marks" data-i18n-aria="marksAria" aria-label="Repères"></div>
+          <div id="months"></div>
+          <div id="marks-legend" data-i18n-html="marksLegend"><span class="key season"></span> solstices et équinoxes <span class="key dst"></span> changements d'heure</div>
+        </div>
+        <div id="modes" class="seg" role="radiogroup" data-i18n-aria="modesAria" aria-label="Mode d'heure">
+          <button type="button" data-mode="current" data-i18n="mode.current">Règles actuelles</button>
+          <button type="button" data-mode="dst" data-i18n="mode.dst">Heure d'été toute l'année</button>
+          <button type="button" data-mode="std" data-i18n="mode.std">Heure normale toute l'année</button>
+        </div>
+        <label id="recent-wrap" data-i18n-title="recentTip" title="Ces régions ne changent pas d'heure, quel que soit le mode choisi">
+          <input type="checkbox" id="recent" checked />
+          <span data-i18n-html="recent">Changements récents : <b>C.-B.</b> (UTC−7), <b>Alberta</b> (UTC−6) et <b>Manitoba</b> (UTC−5) et <b>T.N.-O.</b> (UTC−6) en heure d'été permanente</span>
+        </label>
+      </section>
+
+      <section id="map-wrap">
+        <div id="map"></div>
+        <div id="legend">
+          <b data-i18n="legendTitle">Midi solaire vs 12:00 (minutes)</b>
+          <div id="bar"></div>
+          <div id="ticks"></div>
+          <div class="line-key"><span class="noon-key"></span> <span data-i18n="lineKey">Midi solaire à 12:00 exactement</span></div>
+        </div>
+        <div id="tooltip" hidden></div>
+      </section>
+      <p class="note" data-i18n="note">
+        Couleur : heure civile du midi solaire (moment où le soleil est le plus haut) moins 12:00. Positif = après midi.
+        Les lignes brunes sont les limites de fuseaux horaires. Dans les régions qui n'observent pas l'heure d'été
+        (Saskatchewan, Yukon, nord-est de la C.-B., Basse-Côte-Nord), l'heure ne change dans aucun mode. Limites de
+        fuseaux approximatives. Survolez la carte pour le détail.
+      </p>
+
+      <section id="cities">
+        <h2 data-i18n="cities">Comparaison par ville</h2>
+        <div class="table-scroll"><table id="cities-table"></table></div>
+      </section>
+    </main>
+    <footer class="site-foot">
+      <div class="bar">
+        <span class="attribution"><span data-i18n="footer">Conçu à Québec par</span> <a href="https://paulcote.net" target="_blank" rel="noopener">Paul Côté</a> — <span data-i18n="rights">© 2026 Tous droits réservés</span></span>
+        <nav class="links" aria-label="Pages légales"><a href="sources.html" data-keep-lang data-i18n="sources">Sources de données</a></nav>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
